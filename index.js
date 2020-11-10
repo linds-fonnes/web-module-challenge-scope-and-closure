@@ -103,6 +103,7 @@ function getInningScore(inningCB) {
 }
 
 getInningScore(inning);
+
 /* Task 5: scoreboard()
 Use the scoreboard function below to do the following:
   1. Receive a callback function, that you create, called `getInningScore`
@@ -147,10 +148,18 @@ Use the scoreboard function below to do the following:
   */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScoreCB,inningCB,numberOfInnings) {
+  const totalGame = [];
+  let score = getInningScoreCB(inningCB);
+  for(let i=0 ; i< numberOfInnings; i++){
+    const currentScore = getInningScoreCB();
+    totalGame.Home = totalGame.Home + currentScore();
+    totalGame.Away = totalGame.Away + currentScore();
+    totalGame.push(`Inning ${i + 1}: Away ${score.Away} - Home ${score.Home}`);
+  }
+  return totalGame;
 }
-
+scoreboard(getInningScore,inning,9);
 
 
 
